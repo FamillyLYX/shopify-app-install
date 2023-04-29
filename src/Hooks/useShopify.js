@@ -1,14 +1,15 @@
 import ShopifyAPI from "shopify-node-api";
 const APIKEY = import.meta.env.VITE_SHOPIFY_API_KEY;
+const SECRET_KEY = import.meta.env.VITE_SHOPIFY_SHARED_SECRET;
 
-export const useShopify = () => {
-  if (APIKEY) {
+export const useShopify = (shop) => {
+  if (APIKEY && SECRET_KEY) {
     return new ShopifyAPI({
-      shop: "familylukso.myshopify.com", // MYSHOP.myshopify.com
-      shopify_api_key: import.meta.env.VITE_SHOPIFY_API_KEY, // Your API key
-      shopify_shared_secret: import.meta.env.VITE_SHOPIFY_SHARED_SECRET, // Your Shared Secret
+      shop: shop, // MYSHOP.myshopify.com
+      shopify_api_key: APIKEY, // Your API key
+      shopify_shared_secret: SECRET_KEY, // Your Shared Secret
       shopify_scope: "write_products",
-      redirect_uri: `${window.location.origin}/finish_auth`,
+      redirect_uri: `${window.location.origin}/auth`,
       nonce: "1", // you must provide a randomly selected value unique for each authorization request
     });
   } else {
