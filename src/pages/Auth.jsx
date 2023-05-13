@@ -1,12 +1,17 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useShopify } from "../Hooks/useShopify";
 
 function Auth() {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
   const [isLoading, setLoading] = useState(true);
   const [response, setResponse] = useState();
-  const params = useParams();
+  const params = Array.from(searchParams.entries()).reduce(
+    (acc, [key, value]) => ({ ...acc, [key]: value }),
+    {}
+  );
   const Shopify = useShopify(params.shop);
   const navigate = useNavigate();
   useEffect(() => {
