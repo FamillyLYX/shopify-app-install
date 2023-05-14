@@ -1,6 +1,6 @@
 import ShopifyAPI from "shopify-node-api";
-const APIKEY = import.meta.env.VITE_SHOPIFY_API_KEY;
-const SECRET_KEY = import.meta.env.VITE_SHOPIFY_SHARED_SECRET;
+export const APIKEY = import.meta.env.VITE_SHOPIFY_API_KEY;
+export const SECRET_KEY = import.meta.env.VITE_SHOPIFY_SHARED_SECRET;
 
 export const useShopify = (shop) => {
   if (APIKEY && SECRET_KEY) {
