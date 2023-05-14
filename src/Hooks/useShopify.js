@@ -8,7 +8,7 @@ export const useShopify = (shop) => {
       shop: shop, // MYSHOP.myshopify.com
       shopify_api_key: APIKEY, // Your API key
       shopify_shared_secret: SECRET_KEY, // Your Shared Secret
-      shopify_scope: "write_products",
+      shopify_scope: "write_orders",
       redirect_uri: `${window.location.origin}/auth`,
       nonce: "1", // you must provide a randomly selected value unique for each authorization request
     });
