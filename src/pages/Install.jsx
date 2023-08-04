@@ -35,6 +35,16 @@ function Install() {
           value={Shop}
           onChange={(e) => setShop(e.target.value)}
         ></input>
+
+        <div>
+          <div className="mt-5 font-bold text-lg">Scopes</div>
+          <div className="flex gap-4 flex-wrap max-w-md">
+            <li>Read Products</li>
+            <li>Write Checkouts</li>
+            <li>Write Ordes</li>
+            <li>Access payment mandate scopes(Make Payments)</li>
+          </div>
+        </div>
         <button
           onClick={() => {
             createAuth();
