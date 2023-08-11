@@ -19,23 +19,16 @@ function Install() {
   }, [Shop]);
   console.log(shop);
 
-  // useEffect(() => {
-  //   if (queryParam) {
-  //     setShop(queryParam);
-  //   }
-  // }, [queryParam]);
+  useEffect(() => {
+    if (queryParam) {
+      createAuth();
+    }
+  }, [shop]);
   return (
     <div>
       <div className="uppercase font-bold text-6xl">Welcome</div>
+      {queryParam ? <div>Installing</div> : <div>No shop is added</div>}
       <div>
-        <div>Enter your shopify shop URL</div>
-        <input
-          className="block mt-10 mx-auto"
-          type="text"
-          value={Shop}
-          onChange={(e) => setShop(e.target.value)}
-        ></input>
-
         <div>
           <div className="mt-5 font-bold text-lg">Scopes</div>
           <div className="flex gap-4 flex-wrap max-w-md">
@@ -45,14 +38,14 @@ function Install() {
             <li>Access payment mandate scopes(Make Payments)</li>
           </div>
         </div>
-        <button
+        {/* <button
           onClick={() => {
             createAuth();
           }}
           className="bg-blue-500 text-white rounded-none mt-5 text-lg focus:outline-0 focus:border-0"
         >
           Install
-        </button>
+        </button> */}
       </div>
     </div>
   );
